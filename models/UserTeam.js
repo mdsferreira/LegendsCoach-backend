@@ -1,12 +1,10 @@
 const mongoose = require("mongoose");
 const { PlayerSchema } = require("./Player");
 const { LogoSchema } = require("./Logo");
-const TeamSchema = new mongoose.Schema({
+const { UserSchema } = require("./User");
+
+const UserTeamSchema = new mongoose.Schema({
   name: {
-    type: String,
-    require: true,
-  },
-  acronym: {
     type: String,
     require: true,
   },
@@ -14,28 +12,20 @@ const TeamSchema = new mongoose.Schema({
     type: [PlayerSchema],
     require: false,
   },
-  image_url: {
-    type: String,
-    require: true,
-  },
   logo: {
     type: LogoSchema,
-    require: false,
+    require: true,
   },
   modified_at: {
     type: Date,
     default: Date.now,
   },
-  location: {
-    type: String,
+  user: {
+    type: UserSchema,
     require: true,
-  },
-  slug: {
-    type: String,
-    require: false,
   },
 });
 
-const Team = mongoose.model("Team", TeamSchema);
+const UserTeam = mongoose.model("UserTeam", UserTeamSchema);
 
-module.exports = { Team, TeamSchema };
+module.exports = { UserTeam, UserTeamSchema };

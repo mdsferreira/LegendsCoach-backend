@@ -1,19 +1,20 @@
 const mongoose = require("mongoose");
+const { number } = require("@hapi/joi");
 
 const LogoSchema = new mongoose.Schema({
-  mainColor: {
+  badge: {
+    type: Number,
+    require: true,
+  },
+  badge_color: {
     type: String,
     require: true,
   },
-  secondaryColor: {
-    type: String,
+  logo: {
+    type: Number,
     require: true,
   },
-  image: {
-    type: String,
-    require: true,
-  },
-  secondaryImage: {
+  logo_color: {
     type: String,
     require: true,
   },

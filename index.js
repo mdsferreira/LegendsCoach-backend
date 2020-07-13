@@ -7,7 +7,7 @@ env.config();
 // DB config
 const authRoute = require("./routes/auth");
 const teamRoute = require("./routes/team");
-
+const leagueRoute = require("./routes/league");
 // conect to mongo
 mongoose
   .connect(process.env.DB_CONNECT, {
@@ -24,6 +24,7 @@ app.use(express.json());
 //Route Middlewares
 app.use("/api/user", authRoute);
 app.use("/api/team", teamRoute);
+app.use("/api/league", leagueRoute);
 
 app.listen(3000, () => {
   console.log("backend running");
